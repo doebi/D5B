@@ -8,8 +8,11 @@ from decimal import *
 def index(request):
     return render(request, 'index.html')
 
-def track(request, user_id, brand):
-    return HttpResponse("tracking!")
+def track(request, user_id, barcode):
+    b = get_object_or_404(Product, barcode=barcode)
+    u = get_object_or_404(User, username=user_id)
+    e = Event.objects.create(user=u, amount=1, value=1, product=b, action='C')
+    return HttpResponse()
 
 def deposit(request):
     data = list()

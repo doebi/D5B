@@ -10,7 +10,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('event.views',
         url(r'^$', 'index'),
-        url(r'^track/(?P<user_id>\w+)/(?P<brand>\w+)/$', 'track'),
+        url(r'^track/(?P<user_id>\w+)/(?P<barcode>\w+)/$', 'track'),
         url(r'^deposit/$', 'deposit'),
         url(r'^user/(?P<user_id>\w+)/$', 'user'),
         url(r'^user/$', 'userlist'),
