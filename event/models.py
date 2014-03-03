@@ -29,4 +29,11 @@ class Event(models.Model):
 
     def __unicode__(self):
         # return " ".join([str(self.user), str(self.action), str(self.product), str(self.timestamp), str(self.amount), str(self.value)])
-        return self.timestamp.strftime("%Y-%m-%d %H:%M") + " " + str(self.user) + ": " + str(self.get_action_display()) + " " + str(self.amount) + "x " + str(self.product) + " (EUR " + str(self.value) + ")"
+        return self.timestamp.strftime("%Y-%m-%d %H:%M") + " " + unicode(self.user) + ": " + unicode(self.get_action_display()) + " " + unicode(self.amount) + "x " + unicode(self.product) + " (EUR " + unicode(self.value) + ")"
+
+class Achievement(models.Model):
+    name = models.CharField()
+    description = models.CharField()
+    def is_valid(self, user):
+        return True
+
