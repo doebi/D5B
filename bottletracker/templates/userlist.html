@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Deposit{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Users</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div style="margin-top:30px" class="panel panel-default">
+            <ul class="list-group">
+            {% for u in users %}
+            <li class="list-group-item clearfix">
+                <i class="fa fa-user"></i>
+                <span>{{u.username}}</span>
+                <a class="btn btn-primary pull-right" href="{{u.username}}">
+                    Profile
+                </a>
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+{% endblock %}
