@@ -32,6 +32,13 @@ def sync(request):
     dump = "[{'name': 'Ratsherrn', 'barcode': '90104015'}]"
     return HttpResponse(json.dumps(drinks))
 
+def product(request, product_id):
+    p = Product.objects.get(id=product_id)
+    data = dict()
+    data['name'] = p.name
+    data['img'] = p.url
+    return render(request, 'product.html', {'data': data})
+
 def user(request, user_id):
     u = get_object_or_404(User, username=user_id)
     data = {'name': u.username, 'balance': Decimal(0)}
@@ -65,6 +72,10 @@ def user(request, user_id):
     data['last'] = last.product.name + ", " + text
     return render(request, 'user.html', {'data': data})
 
+def productlist(request):
+    products = Product.objects.all().exclude(name='dummy')
+    return render(request, 'productlist.html', {'products': products})
+
 def userlist(request):
-    users = User.objects.all()
+    users = User.objects.all().exclude(username='admin')
     return render(request, 'userlist.html', {'users': users})

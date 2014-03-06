@@ -14,6 +14,8 @@ urlpatterns += patterns('event.views',
         url(r'^deposit/$', 'deposit'),
         url(r'^users/(?P<user_id>\w+)/$', 'user'),
         url(r'^users/$', 'userlist'),
+        url(r'^products/(?P<product_id>\w+)/$', 'product'),
+        url(r'^products/$', 'productlist'),
         url(r'^sync/$', 'sync'),
 )
 
