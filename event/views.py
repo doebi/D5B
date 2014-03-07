@@ -8,7 +8,8 @@ from datetime import datetime
 import simplejson as json
 
 def index(request):
-    return render(request, 'index.html')
+    recent = Event.objects.order_by('-timestamp')[:10]
+    return render(request, 'index.html', {'events': recent})
 
 def track(request, user_id, barcode):
     b = get_object_or_404(Product, barcode=barcode)
@@ -22,14 +23,13 @@ def deposit(request):
         sumobject = Event.objects.filter(product=p).aggregate(Sum('amount'))
         if not sumobject['amount__sum']:
             sumobject['amount__sum'] = 0
-        data.append({'name': p.name, 'amount': sumobject['amount__sum']})
-    return render(request, 'deposit.html', {'products': data})
+        data.append({'label': p.name, 'value': sumobject['amount__sum']})
+    return render(request, 'deposit.html', {'products': json.dumps(data).replace('&quot;', '"')})
 
 def sync(request):
     drinks = []
     for p in Product.objects.all():
         drinks.append({'name': p.name, 'barcode': p.barcode})
-    dump = "[{'name': 'Ratsherrn', 'barcode': '90104015'}]"
     return HttpResponse(json.dumps(drinks))
 
 def product(request, product_id):

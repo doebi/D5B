@@ -31,11 +31,13 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="list-group">
+                    {% for e in events %}
                     <a href="#" class="list-group-item">
-                        <i class="fa fa-check fa-fw"></i> {{user}} bought {{amount}} bottles of {{product}}
-                        <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                        <i class="fa fa-check fa-fw"></i> {{e.user.username}} did {{e.amount}}x {{e.product.name}}
+                        <span class="pull-right text-muted small"><em><script>document.write(moment("{{e.timestamp}}", "MMMM D, YYYY, h:m a").fromNow());</script></em>
                         </span>
                     </a>
+                    {% endfor %}
                 </div>
             </div>
             <!-- /.panel-body -->

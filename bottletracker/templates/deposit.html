@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}d5b.debi.at - Deposit{% endblock %}
+{% block title %}d5b.doebi.at - Deposit{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col-lg-12">
@@ -9,7 +9,7 @@
 </div>
 <!-- /.row -->
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-bar-chart-o fa-fw"></i> Last 24h Chart
@@ -22,6 +22,31 @@
         </div>
         <!-- /.panel -->
     </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-clock-o fa-fw"></i>Current stock
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div id="deposit-stocks"></div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-4 -->
 </div>
 <!-- /.row -->
+{% endblock %}
+{% block script %}
+<script>
+$(function(){
+    Morris.Donut({
+      element: 'deposit-stocks',
+      data: {{products}},
+    });
+});
+</script>
 {% endblock %}

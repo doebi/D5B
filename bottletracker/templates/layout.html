@@ -15,12 +15,25 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <script src="/static/js/moment.min.js"></script>
 
 </head>
 
 <body>
 
     <div id="wrapper">
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">d5b: Webinterface</a>
+            </div>
+            <!-- /.navbar-header -->
+        </nav>
         <!-- /.navbar-static-top -->
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
@@ -89,6 +102,7 @@
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="/static/js/sb-admin.js"></script>
+    {% block script %}{% endblock %}
 </body>
 
 </html>
